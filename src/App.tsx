@@ -1,11 +1,16 @@
 import {useState} from 'react';
 import Modal from './components/Modal/Modal.tsx';
 import './App.css';
+import Alert from './components/Alert/Alert.tsx';
 
 function App() {
   const [showModal, setShowModal] = useState(true);
 
   const cancel = () => {
+    setShowModal(false);
+  }
+
+  const closeAlert = () => {
     setShowModal(false);
   }
 
@@ -25,6 +30,14 @@ function App() {
         </div>
         <p>Modal content</p>
       </Modal>
+
+      <Alert
+        type="danger"
+        onDismiss={closeAlert}
+      >
+        This is a warning type alert
+      </Alert>
+      <Alert type="success">This is a success type alert</Alert>
     </>
   );
 }
